@@ -1,0 +1,27 @@
+#! /bin/bash
+
+coproc execpty ./interactive-command
+INPUTFD=${COPROC[0]}
+OUTPUTFD=${COPROC[1]}
+
+while read key value
+do
+	echo $key $value
+	case $key in
+		hello)
+			echo name >&$OUTPUTFD
+			;;
+		name)
+			echo tty >&$OUTPUTFD
+			;;
+		tty)
+			echo echo >&$OUTPUTFD
+			;;
+		echo)
+			echo quit >&$OUTPUTFD
+			;;
+	esac
+
+done <&$INPUTFD
+
+exit 0
