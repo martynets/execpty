@@ -54,6 +54,7 @@ static char* myname;
 static char* buffer;
 static pid_t cpid=0;
 static int ret_value=E_ERROR, quiet=0, noecho=0, cr_output=0, command=0;
+static int max_pollable_fds=2;
 static int pollable_fds=1;
 static int poll_timeout=-1;
 
@@ -213,13 +214,19 @@ int main(int argc, char** argv)
 	while(1)
 		{
 			if(poll(fds, pollable_fds, poll_timeout) == -1) error("poll()");
-			pollable_fds=2;
+			pollable_fds=max_pollable_fds;
 			poll_timeout=-1;
 
 			if(fds[0].revents & POLLIN) data_transfer(mfd, STDOUT_FILENO);
 			if(fds[0].revents & POLLHUP) break;	// child terminated
+
+			/* We have to stay in the loop in case of STDIN either EOF or pipe write end close
+			 * to continue output transfer.
+			 * POLLIN @ EOF temporary disables poll on STDIN when POLLHUP disables it permanently.
+			 */
 			if(fds[1].revents & POLLIN) data_transfer(STDIN_FILENO, mfd);
-			if(fds[1].revents & POLLHUP) break;	// pipe write end closed
+			if(fds[1].revents & POLLHUP)	// pipe write end closed
+				pollable_fds=max_pollable_fds=1;	// We will not poll the pipe any more
 			fds[1].revents=0; // in case we detected EOF and postponed next poll
 		}
 
