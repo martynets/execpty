@@ -34,6 +34,7 @@
 #include <signal.h>
 #include <termios.h>
 #include <stdio.h>
+#include <string.h>
 
 #define PROJECT_NAME "execpty"
 #define VERSION "1.0"
