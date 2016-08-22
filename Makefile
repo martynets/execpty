@@ -1,17 +1,20 @@
-TARGET		= execpty
-INSTALL_DIR	= /usr/bin
+DESTDIR		=
 
-STRIP		= strip
-INSTALL		= install -m 755 -p
+TARGET		= execpty
+TARGETDIR	= $(DESTDIR)/usr/bin
+
+INSTALL		= install -m 755 -p -s -D -t
 
 $(TARGET):
 
 install: $(TARGET) FORCE
-	$(INSTALL) "$(TARGET)" "$(INSTALL_DIR)/$(TARGET)"
-	$(STRIP) "$(INSTALL_DIR)/$(TARGET)"
+	$(INSTALL) "$(TARGETDIR)" "$(TARGET)"
 
 uninstall:
-	$(RM) "$(INSTALL_DIR)/$(TARGET)"
+	$(RM) "$(TARGETDIR)/$(TARGET)"
+
+clean:
+	$(RM) "$(TARGET)"
 
 FORCE:
 

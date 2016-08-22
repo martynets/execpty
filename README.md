@@ -1,4 +1,4 @@
-Copyright (C) 2015 Andriy Martynets [martynets@volia.ua](mailto:martynets@volia.ua)<br>
+Copyright (C) 2015 Andriy Martynets [martynets@volia.ua](mailto:martynets@volia.ua)  
 See the end of the file for license conditions.
 
 -------------------------------------------------------------------------------
@@ -15,9 +15,13 @@ To compile the utility from the source code the following packages must be insta
 - libc-dev
 
 #####Downloading
-The latest version of the `execpty` utility can be downloaded from the link below:
+The latest released version of the `execpty` utility can be checked by the link below:
 
 https://github.com/martynets/execpty/releases/latest
+
+Current development version can be downloaded using the following link:
+
+https://github.com/martynets/execpty/archive/master.zip
 
 The `execpty` project is also available via Git access from the GitHub server:
 
