@@ -1,4 +1,4 @@
-Copyright (C) 2015 Andriy Martynets [martynets@volia.ua](mailto:martynets@volia.ua)  
+Copyright (C) 2015, 2016 Andriy Martynets [martynets@volia.ua](mailto:martynets@volia.ua)  
 See the end of the file for license conditions.
 
 -------------------------------------------------------------------------------
@@ -57,11 +57,11 @@ The below options are recognized. The first unrecognized option starts the comma
 
 Turning off echoing on the terminal connected to standard input makes sense only if the input data are typed from a console which is not the case the `execpty` utility is designed for. This option can be found useful for test cases only and when sensitive data are to be typed.
 
-There is no standard way to know when the system completed loading the image of the command as well as there is no way to guess when the command has completed its own initialization, reset buffers and started to read the data. To avoid the case when the data are written to pts before the command starts read them the `execpty` utility, by default, writes data to pts only after anything was read from it. This means the data are provided in response to a prompt from the command. This is very common scenario for interactive commands. But if the command does not fall in this scope and silently expects some data the blind input mode can be activated by --blind option. To avoid the issue described above some delay must be made. For example:
+There is no standard way to know when the system completed loading the image of the command as well as there is no way to guess when the command has completed its own initialization, reset buffers and started to read the data. To avoid the case when the data are written to pts before the command starts read them the `execpty` utility, by default, writes data to pts only after anything was read from it. This means the data are provided in response to a prompt from the command. This is very common scenario for interactive commands. But if the command does not fall in this scope and silently expects some data the blind input mode can be activated by `--blind` option. To avoid the issue described above some delay must be made. For example:
 ```
 execpty --blind silent_command < <(sleep 1; echo $OUTPUT_DATA)
 ```
-The `execpty` utility makes some configuration of the pts. It turns off echoing and sets it, by default, to use single byte NL (new line or LF - line feed, 0x0A) as the end of line. Option --crnl changes to use 2 bytes CR/NL (carriage return/new line, 0x0D 0x0A) instead.
+The `execpty` utility makes some configuration of the pts. It turns off echoing and sets, by default, to use single byte `NL` (new line or `LF` - line feed, `0x0A`) as the end of line. Option `--crnl` changes to use 2 bytes `CR/NL` (carriage return/new line, `0x0D 0x0A`) instead.
 
 ######Values of exit status mean the following:
 - 0 - success (`--help` or `--version` only).
@@ -76,9 +76,9 @@ echo $PASSWORD | execpty su -c ./maintenance.sh
 ```
 > Note: here-document and here-string make the shell to create a temporary file within the file system with the output data. It is very ill-advised to use this technic for sensitive data. Using pipes (including named pipes and process substitution) is much safer. On systems which doesn't support `/dev/fd/nn` process substitution might also use temporary files. To be sure check: `readlink  <(true)`
 
-The `demo` directory contains two scripts which demonstrate usage of the `execpty` utility to automate an interactive program. The `interactive-command` script emulates an interactive program. It supports commands `name`, `tty`, `echo` and `quit`. The `demo` script automates it. See their sources for more details.
+The `demo` directory in the source tree contains two scripts which demonstrate usage of the `execpty` utility to automate an interactive program. The `interactive-command` script emulates an interactive program. It supports commands `name`, `tty`, `echo` and `quit`. The `demo` script automates it. See their sources for more details.
 
-> Note: if you need examples on how to script unidirectional or bidirectional communication with a background process see the Invocations section in `README.md` file of the [dialogbox project](https://github.com/martynets/dialogbox/).
+> Note: if you need examples on how to script unidirectional or bidirectional communication with a background process see the `Invocations` section in `README.md` file of the [dialogbox project](https://github.com/martynets/dialogbox/).
 
 #####Bug Reporting
 You can send `execpty` bug reports and/or any compatibility issues directly to the author [martynets@volia.ua](mailto:martynets@volia.ua).
@@ -88,13 +88,19 @@ You can also use the online bug tracking system in the GitHub `execpty` project 
   https://github.com/martynets/execpty/issues
 
 #####Change Log
-1.0    Initial release
+|Publication Date| Version | Changes |
+|----------------|---------|---------|
+|Aug 26, 2016|1.1|Manual pages added, made packaging ready|
+|Oct 21, 2015|1.0|Initial release|
+|Oct 2, 2015 |1.0-RC|Initial development, non-released version|
 
 #####License
-Copyright (C) 2015 Andriy Martynets [martynets@volia.ua](mailto:martynets@volia.ua)
+Copyright (C) 2015, 2016 Andriy Martynets [martynets@volia.ua](mailto:martynets@volia.ua)  
+This file is part of `execpty`.
 
-This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+`execpty` is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
 
-This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+`execpty` is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
 
-You should have received a copy of the GNU General Public License along with this program.  If not, see <http://www.gnu.org/licenses/>.
+You should have received a copy of the GNU General Public License along with
+`execpty`.  If not, see <http://www.gnu.org/licenses/>.

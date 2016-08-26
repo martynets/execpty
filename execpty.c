@@ -1,7 +1,7 @@
 /*
- * execpty version 1.0 - Execute a command in pseudo terminal redirecting pty I/O to standard I/O.
+ * execpty version 1.1 - Execute a command in pseudo terminal redirecting pty I/O to standard I/O.
  *
- * Copyright (C) 2015 Andriy Martynets <martynets@volia.ua>
+ * Copyright (C) 2015, 2016 Andriy Martynets <martynets@volia.ua>
  *--------------------------------------------------------------------------------------------------------------
  *	This program is free software: you can redistribute it and/or modify
  *	it under the terms of the GNU General Public License as published by
@@ -37,7 +37,7 @@
 #include <string.h>
 
 #define PROJECT_NAME "execpty"
-#define VERSION "1.0"
+#define VERSION "1.1"
 
 /*	Exit status:
  *		- 0 success (--help or --version only)
@@ -331,7 +331,8 @@ Exit status:\n\
 	- if the command is terminated by a signal - the signal number plus 128\n\
 	- on success - exit status of the command executed\n\
 \n\
-Full documentation at: <https://github.com/martynets/execpty/>\n";
+Full documentation at: <https://github.com/martynets/execpty/>\n\
+or available locally via: man "PROJECT_NAME"\n";
 
 	puts(usage);
 }
@@ -340,7 +341,7 @@ static void version()
 {
 	char* ver=
 PROJECT_NAME" v"VERSION"\n\
-Copyright (C) 2015 Andriy Martynets <martynets@volia.ua>\n\
+Copyright (C) 2015, 2016 Andriy Martynets <martynets@volia.ua>\n\
 License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>.\n\
 This program comes with ABSOLUTELY NO WARRANTY.\n\
 This is free software, and you are welcome to redistribute it\n\
