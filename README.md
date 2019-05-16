@@ -1,20 +1,20 @@
-Copyright (C) 2015, 2016 Andriy Martynets [martynets@volia.ua](mailto:martynets@volia.ua)  
-See the end of the file for license conditions.
+Copyright (C) 2015, 2016 Andriy Martynets [martynets@volia.ua](mailto:martynets@volia.ua)<br>
+See end of this file for license conditions.
 
 -------------------------------------------------------------------------------
 
-#####Introduction
+#### Introduction
 The `execpty` (EXECute in PTY) is a tiny utility to run a command in a pseudo terminal with redirection of the pty I/O to standard I/O. It is developed to run an interactive command line utility (a utility which reads/outputs from/to its controlling terminal) within a script and to communicate with it via standard input/output streams. In other words it helps to make interactive programs non-interactive.
-There are plenty projects with the similar goal - to script interactive applications: `expect`, `empty`, `pty4`, etc. This one is probably the simplest. The `execpty` utility does the only thing - redirects pty I/O to standard streams and the rest is up to the author of the final sript...
+There are plenty projects with the similar goal - to script interactive applications: `expect`, `empty`, `pty4`, etc. This one is probably the simplest. The `execpty` utility does the only thing - redirects pty I/O to standard streams and the rest is up to the author of the final script...
 
-#####Software Requirements
+#### Software Requirements
 The source code of the `execpty` utility contains calls to standard C library functions and POSIX compliant system calls. Thus it most likely can be compiled for any POSIX compliant system but the author tested it in GNU/Linux environment only.
 To compile the utility from the source code the following packages must be installed on a GNU/Linux system:
 - gcc
 - make
 - libc-dev
 
-#####Downloading
+#### Downloading
 The latest released version of the `execpty` utility can be checked by the link below:
 
 https://github.com/martynets/execpty/releases/latest
@@ -27,7 +27,7 @@ The `execpty` project is also available via Git access from the GitHub server:
 
 https://github.com/martynets/execpty.git
 
-#####Installation
+#### Installation
 To compile and install the utility issue the following commands from the directory containing the source:
 ```
 make
@@ -39,7 +39,7 @@ To uninstall the utility issue the following command from the same directory (th
 ```
 make uninstall
 ```
-#####Usage
+#### Usage
 The utility recognizes several command line options. The command line syntax is the following:
 ```
 execpty  [OPTIONS] [COMMAND-WITH-ARGUMENTS]
@@ -63,13 +63,13 @@ execpty --blind silent_command < <(sleep 1; echo $OUTPUT_DATA)
 ```
 The `execpty` utility makes some configuration of the pts. It turns off echoing and sets, by default, to use single byte `NL` (new line or `LF` - line feed, `0x0A`) as the end of line. Option `--crnl` changes to use 2 bytes `CR/NL` (carriage return/new line, `0x0D 0x0A`) instead.
 
-######Values of exit status mean the following:
+##### Values of exit status mean the following:
 - 0 - success (`--help` or `--version` only).
 - 127 - system call failure. Corresponding error message is displayed unless `--quiet` option is specified.
 - Values greater than 128 - the command is terminated by a signal. The value is the signal number plus 128
 - None of the above cases (successful command execution) - exit status of the command executed
 
-#####Examples
+#### Examples
 The following command runs the `./maintenance.sh` script with root privileges providing root's password in the `PASSWORD` variable
 ```
 echo $PASSWORD | execpty su -c ./maintenance.sh
@@ -80,22 +80,22 @@ The `demo` directory in the source tree contains two scripts which demonstrate u
 
 > Note: if you need examples on how to script unidirectional or bidirectional communication with a background process see the `Invocations` section in `README.md` file of the [dialogbox project](https://github.com/martynets/dialogbox/).
 
-#####Bug Reporting
+#### Bug Reporting
 You can send `execpty` bug reports and/or any compatibility issues directly to the author [martynets@volia.ua](mailto:martynets@volia.ua).
 
 You can also use the online bug tracking system in the GitHub `execpty` project to submit new problem reports or search for existing ones:
 
   https://github.com/martynets/execpty/issues
 
-#####Change Log
+#### Change Log
 |Publication Date| Version | Changes |
 |----------------|---------|---------|
 |Aug 26, 2016|1.1|Manual pages added, made packaging ready|
 |Oct 21, 2015|1.0|Initial release|
 |Oct 2, 2015 |1.0-RC|Initial development, non-released version|
 
-#####License
-Copyright (C) 2015, 2016 Andriy Martynets [martynets@volia.ua](mailto:martynets@volia.ua)  
+#### License
+Copyright (C) 2015, 2016 Andriy Martynets [martynets@volia.ua](mailto:martynets@volia.ua)<br>
 This file is part of `execpty`.
 
 `execpty` is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
