@@ -1,4 +1,4 @@
-Copyright (C) 2015, 2016 Andriy Martynets [martynets@volia.ua](mailto:martynets@volia.ua)<br>
+Copyright (C) 2015, 2016 Andriy Martynets [andy.martynets@gmail.com](mailto:andy.martynets@gmail.com)<br>
 See end of this file for license conditions.
 
 -------------------------------------------------------------------------------
@@ -81,7 +81,7 @@ The `demo` directory in the source tree contains two scripts which demonstrate u
 > Note: if you need examples on how to script unidirectional or bidirectional communication with a background process see the `Invocations` section in `README.md` file of the [dialogbox project](https://github.com/martynets/dialogbox/).
 
 #### Bug Reporting
-You can send `execpty` bug reports and/or any compatibility issues directly to the author [martynets@volia.ua](mailto:martynets@volia.ua).
+You can send `execpty` bug reports and/or any compatibility issues directly to the author [andy.martynets@gmail.com](mailto:andy.martynets@gmail.com).
 
 You can also use the online bug tracking system in the GitHub `execpty` project to submit new problem reports or search for existing ones:
 
@@ -95,7 +95,7 @@ You can also use the online bug tracking system in the GitHub `execpty` project 
 |Oct 2, 2015 |1.0-RC|Initial development, non-released version|
 
 #### License
-Copyright (C) 2015, 2016 Andriy Martynets [martynets@volia.ua](mailto:martynets@volia.ua)<br>
+Copyright (C) 2015, 2016 Andriy Martynets [andy.martynets@gmail.com](mailto:andy.martynets@gmail.com)<br>
 This file is part of `execpty`.
 
 `execpty` is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.

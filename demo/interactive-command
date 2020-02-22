@@ -8,22 +8,22 @@ echo hello > $TTY
 
 while read INPUT
 do
-	case $INPUT in
-		name)
-			echo name is $0 > $TTY
-			;;
-		tty)
-			echo tty is $TTY > $TTY
-			;;
-		echo)
-			SETTINGS=$(stty --all)
-			[[ "$SETTINGS" =~ " echo " ]] && echo echo is on > $TTY
-			[[ "$SETTINGS" =~ " -echo " ]] && echo echo is off > $TTY
-			;;
-		quit)
-			break
-			;;
-	esac
+  case $INPUT in
+    name)
+      echo name is $0 > $TTY
+      ;;
+    tty)
+      echo tty is $TTY > $TTY
+      ;;
+    echo)
+      SETTINGS=$(stty --all)
+      [[ "$SETTINGS" =~ " echo " ]] && echo echo is on > $TTY
+      [[ "$SETTINGS" =~ " -echo " ]] && echo echo is off > $TTY
+      ;;
+    quit)
+      break
+      ;;
+  esac
 done < $TTY
 
 exit 0

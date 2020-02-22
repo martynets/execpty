@@ -1,12 +1,12 @@
-DESTDIR		=
+DESTDIR    =
 
-TARGET		= execpty
-TARGETDIR	= $(DESTDIR)/usr/bin
-INSTALL		= install -m 755 -p -s -D -t
+TARGET     = execpty
+TARGETDIR  = $(DESTDIR)/usr/bin
+INSTALL    = install -m 755 -p -s -D -t
 
-MANPAGE		= execpty.1.gz
-MANDIR		= $(DESTDIR)/usr/share/man/man1
-MANINSTALL	= install -m 644 -p -D -t
+MANPAGE    = execpty.1.gz
+MANDIR     = $(DESTDIR)/usr/share/man/man1
+MANINSTALL = install -m 644 -p -D -t
 
 
 $(TARGET):
